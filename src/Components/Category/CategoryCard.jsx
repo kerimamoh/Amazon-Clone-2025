@@ -18,20 +18,3 @@ const CatagoryCard = ({ data }) => {
 
 export default CatagoryCard;
 
-// const CatagoryCard = ({ data }) => {
-//   if (!data) return null;
-
-//   const { name = "", title = "Category", imgLink = "" } = data;
-//   return (
-//     <div className={classes.category}>
-//       <Link to={`/category/${name}`}>
-//         <span>
-//           <h2>{title}</h2>
-//         </span>
-//         <img src={imgLink} alt={`${title} image`} />
-//         <p>Shop now</p>
-//       </Link>
-//     </div>
-//   );
-// };
-

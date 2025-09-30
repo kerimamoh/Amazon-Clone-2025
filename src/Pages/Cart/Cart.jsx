@@ -36,15 +36,15 @@ function Cart() {
           <h2>Hello</h2>
           <h3>Your Shopping Basket</h3>
           <hr />
-          {basket?.length ==0 ? (
-          
+          {basket?.length == 0 ? (
             <p>Your Amazon Cart is empty</p>
           ) : (
             basket?.map((item, index) => (
               
-              <section className={classes.cart_product}>
+              <section key={item} className={classes.cart_product}>
                 <ProductCard
-                  key={item ? item.id : index}
+                  
+                  
                   product={item}
                   renderDesc={true}
                   renderAdd={false}

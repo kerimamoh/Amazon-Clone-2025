@@ -6,9 +6,10 @@ import LowerHeader from "./LowerHeader";
 import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
+import {auth} from "../../Utility/firebase";
 
 const Header = () => {
-  const [{ basket }, dispatch] = useContext(DataContext);
+  const [{user, basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => {
     return amount + (item?.amount ?? 0);
   }, 0);
@@ -40,30 +41,38 @@ const Header = () => {
               <option value="">All</option>
             </select>
             <input type="text" />
-            <BsSearch size={25} />
+            <BsSearch size={38} />
           </div>
           {/* right side link */}
           <div className={classes.order_container}>
-            <div className={classes.language}>
+            <Link to="" className={classes.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_the_United_States.png"
                 alt="US Flag"
               />
-              <select>
+              <select name="" id="">
                 <option value="">EN</option>
               </select>
-            </div>
-            {/* three componenets */}
-            <Link to="/auth">
-              <p>Sign In</p>
-              <span>Account & Lists </span>
             </Link>
-            {/* Orders */}
-            <Link to="/orders">
+            <Link to={!user && "/auth"}>
+              <div>
+                {user ? (
+                  <>
+                    <p>Hello {user?.email?.split("@")[0]} </p>
+                    <span onClick={()=>auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    <p> Hello,Sign In</p>
+                    <span>Account & Lists </span>
+                  </>
+                )}
+              </div>
+            </Link>
+           <Link to="/orders">
               <p>returns</p>
               <span>& Orders</span>
             </Link>
-            {/* cart */}
             <Link to="/Cart" className={classes.cart}>
               <BiCart size={35} />
               <span>{totalItem}</span>
