@@ -4,7 +4,7 @@ import LayOut from "../../Components/LayOut/LayOut";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { productUrl } from "../../endpoints";
-import ProductCard from "../../Components/Product/ProductCard";
+import ProductCard from "../../Components/product/ProductCard";
 import Loader from "../../Components/Loader/Loader";
 
 function ProductDetail() {
